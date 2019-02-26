@@ -13,13 +13,15 @@
 	<arg name="gazebo_world" default="$(find rb1_base_gazebo)/worlds/rb1_base.world"/>
 	<arg name="debug" default="false"/>
         <arg name="launch_base_hw_sim" default="false"/>
-        <arg name="launch_elevator_fake_pickup_gazebo" default="false"/> 
+        <arg name="launch_elevator_fake_pickup_gazebo" default="false"/>
+	<arg name="config_yaml" default="$(find rb1_base_sim_bringup)/config/elevator_fake_pickup_gazebo.yaml"/> 
 	
 	<!--params of the different robots-->
 	<!-- robot a -->
 	<arg name="id_robot_a" default="rb1_base_a"/>
 	<arg name="x_init_pose_robot_a" default="0" />
 	<arg name="y_init_pose_robot_a" default="0" />
+	<arg name="yaw_init_pose_robot_a" default="0" />
 	<arg name="z_init_pose_robot_a" default="0" />
 	<arg name="localization_robot_a" default="false"/>
 	<arg name="gmapping_robot_a" default="false"/>
@@ -34,6 +36,7 @@
 	<arg name="id_robot_b" default="rb1_base_b"/>
 	<arg name="x_init_pose_robot_b" default="0" />
 	<arg name="y_init_pose_robot_b" default="1" />
+	<arg name="yaw_init_pose_robot_b" default="0" />
 	<arg name="z_init_pose_robot_b" default="0" />
 	<arg name="localization_robot_b" default="false"/>
 	<arg name="gmapping_robot_b" default="false"/>
@@ -64,6 +67,7 @@
 		<arg name="x_init_pose" value="$(arg x_init_pose_robot_a)"/>
 		<arg name="y_init_pose" value="$(arg y_init_pose_robot_a)"/>
 		<arg name="z_init_pose" value="$(arg z_init_pose_robot_a)"/>
+		<arg name="yaw_init_pose" value="$(arg yaw_init_pose_robot_a)"/>
 		<arg name="xacro_robot" value="$(arg xacro_robot_a)"/>
 		<arg name="launch_robot_localization" value="$(arg localization_robot_a)"/>
 		<arg name="launch_amcl_and_mapserver" value="$(arg amcl_and_mapserver_a)"/>
@@ -122,7 +126,7 @@
 
         <!-- avoids Gazebo physics to pickup carts -->
 	<include if="$(arg launch_elevator_fake_pickup_gazebo)" file="$(find robotnik_base_hw_sim)/launch/elevator_fake_pickup_gazebo.launch">
-		<arg name="config_yaml" value="$(find rb1_base_sim_bringup)/config/elevator_fake_pickup_gazebo.yaml"/>
+		<arg name="config_yaml" value="$(arg config_yaml)"/>
 	</include>
 
   

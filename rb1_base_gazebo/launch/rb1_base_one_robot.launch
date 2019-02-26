@@ -4,6 +4,7 @@
 	<arg name="id_robot" default="rb1_base_a"/>
 	<arg name="x_init_pose" default="0"/>
 	<arg name="y_init_pose" default="0"/>
+	<arg name="yaw_init_pose" default="0"/>
 	<arg name="z_init_pose" default="0"/>
 	<arg name="has_elevator" default="false"/>
 	<arg name="xacro_robot" default="rb1_base_std.urdf.xacro"/>
@@ -73,6 +74,7 @@
 			<arg name="prefix" value="$(arg prefix)"/>
 			<arg name="x_init_pose" value="$(arg x_init_pose)"/>
 			<arg name="y_init_pose" value="$(arg y_init_pose)"/>
+			<arg name="yaw_init_pose" value="$(arg yaw_init_pose)"/>
 			<arg name="z_init_pose" value="$(arg z_init_pose)"/>
 		</include>
 
